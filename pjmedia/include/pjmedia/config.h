@@ -962,7 +962,7 @@
  * By default it is enabled.
  */
 #ifndef PJMEDIA_HAS_SRTP
-	#define PJMEDIA_HAS_SRTP			    1
+	#define PJMEDIA_HAS_SRTP			    0
 #endif
 
 
@@ -972,7 +972,7 @@
  * By default it is enabled.
  */
 #ifndef PJMEDIA_SRTP_HAS_SDES
-	#define PJMEDIA_SRTP_HAS_SDES		    1
+	#define PJMEDIA_SRTP_HAS_SDES		    0
 #endif
 
 

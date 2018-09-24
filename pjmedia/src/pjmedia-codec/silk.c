@@ -1019,6 +1019,7 @@ static pj_status_t  silk_codec_recover(pjmedia_codec* codec,
 	return PJ_SUCCESS;
 }
 
+/*
 #if defined(_MSC_VER)
 	#if PJ_DEBUG
 		#pragma comment(lib, "SKP_Silk_FLP_Win32_debug.lib")
@@ -1026,6 +1027,7 @@ static pj_status_t  silk_codec_recover(pjmedia_codec* codec,
 		#pragma comment(lib, "SKP_Silk_FLP_Win32_mt.lib")
 	#endif
 #endif
+*/
 
 
 #endif /* PJMEDIA_HAS_SILK_CODEC */

@@ -628,6 +628,9 @@
       <Project>{6794b975-4e84-4f49-b2dc-c31f2224e03e}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
+    <ProjectReference Include="..\..\third_party\build\silk\silk.vcxproj">
+      <Project>{7fbabdbe-d27e-45c2-955b-5b17f4fd6ce8}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\..\third_party\build\speex\libspeex.vcxproj">
       <Project>{4b059dba-cd9c-4d0f-be8c-ffb4efd498e9}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
