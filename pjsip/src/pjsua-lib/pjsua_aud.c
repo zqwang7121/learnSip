@@ -322,10 +322,15 @@ pj_status_t pjsua_aud_subsys_init()
 		goto on_error;
 		}
 
+	codec_id = pj_str("PCMU/8000");
+	pjmedia_codec_mgr_set_codec_priority(
+	  pjmedia_endpt_get_codec_mgr(pjsua_var.med_endpt),
+	  &codec_id, PJMEDIA_CODEC_PRIO_DISABLED);
+
 	codec_id = pj_str("SILK/8000");
 	pjmedia_codec_mgr_set_codec_priority(
 	  pjmedia_endpt_get_codec_mgr(pjsua_var.med_endpt),
-	  &codec_id, PJMEDIA_CODEC_PRIO_NORMAL+2);
+	  &codec_id, PJMEDIA_CODEC_PRIO_NORMAL);
 
 	/* Set speex/16000 to higher priority*/
 	codec_id = pj_str("speex/16000");

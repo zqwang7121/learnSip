@@ -556,6 +556,9 @@
     <ClCompile Include="dummy.c" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\opus-1.3-rc2\win32\VS2015\opus.vcxproj">
+      <Project>{219ec965-228a-1824-174d-96449d05f88a}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\..\pjlib-util\build\pjlib_util.vcxproj">
       <Project>{fe07f272-ae7f-4549-9e9f-ef9b80cb1693}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
@@ -645,6 +648,12 @@
     <ProjectReference Include="..\..\third_party\build\yuv\libyuv.vcxproj">
       <Project>{6ac9b65f-0862-4a5c-8a9d-141516993130}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="libpjproject.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
