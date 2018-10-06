@@ -488,8 +488,7 @@ PJ_DEF(pj_status_t) pjsip_endpt_create_request_from_hdr(pjsip_endpoint* endpt,
 		pjsip_fromto_hdr_set_to(to);
 		if(param_contact)
 			{
-			contact = (pjsip_contact_hdr*)
-			pjsip_hdr_clone(tdata->pool, param_contact);
+			contact = (pjsip_contact_hdr*) pjsip_hdr_clone(tdata->pool, param_contact);
 			}
 		else
 			{
@@ -1454,8 +1453,7 @@ static void stateless_send_transport_cb(void* token,
 }
 
 /* Resolver callback for sending stateless request. */
-static void
-stateless_send_resolver_callback(pj_status_t status,
+static void stateless_send_resolver_callback(pj_status_t status,
                                  void* token,
                                  const struct pjsip_server_addresses* addr)
 {

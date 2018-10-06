@@ -32,6 +32,7 @@
 #endif
 
 #define LOG(expr)   		    PJ_LOG(6,expr)
+#define LOG_TEST(expr)      PJ_LOG(3,expr)
 #define ALIGN_PTR(PTR,ALIGNMENT)    (PTR + (-(pj_ssize_t)(PTR) & (ALIGNMENT-1)))
 
 PJ_DEF_DATA(int) PJ_NO_MEMORY_EXCEPTION;
@@ -138,7 +139,7 @@ PJ_DEF(void*) pj_pool_allocate_find(pj_pool_t* pool, pj_size_t size)
 		block_size = pool->increment_size;
 		}
 
-	LOG((pool->obj_name,
+	LOG_TEST((pool->obj_name,
 	     "%u bytes requested, resizing pool by %u bytes (used=%u, cap=%u)",
 	     size, block_size, pj_pool_get_used_size(pool), pool->capacity));
 
@@ -273,7 +274,7 @@ static void reset_pool(pj_pool_t* pool)
 	while(block != &pool->block_list)
 		{
 		pj_pool_block* prev = block->prev;
-		pj_list_erase(block);
+    pj_list_erase(block);
 		(*pool->factory->policy.block_free)(pool->factory, block,
 		                                    block->end - (unsigned char*)block);
 		block = prev;
@@ -292,11 +293,21 @@ static void reset_pool(pj_pool_t* pool)
  */
 PJ_DEF(void) pj_pool_reset(pj_pool_t* pool)
 {
+
 	LOG((pool->obj_name, "reset(): cap=%d, used=%d(%d%%)",
 	     pool->capacity, pj_pool_get_used_size(pool),
 	     pj_pool_get_used_size(pool)*100/pool->capacity));
 
-	reset_pool(pool);
+  pj_pool_block* block = pool->block_list.next;
+
+
+  while(block != &pool->block_list)
+    {
+    block->cur = ALIGN_PTR(block->buf, PJ_POOL_ALIGNMENT);
+    block = block->next;
+    }
+
+//	  reset_pool(pool);
 }
 
 /*

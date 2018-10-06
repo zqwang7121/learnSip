@@ -662,9 +662,8 @@ PJ_DEF(pj_status_t) pjsip_timer_setting_default(pjsip_timer_setting* setting)
 /*
  * Initialize Session Timers in an INVITE session.
  */
-PJ_DEF(pj_status_t) pjsip_timer_init_session(
-  pjsip_inv_session* inv,
-  const pjsip_timer_setting* setting)
+PJ_DEF(pj_status_t) pjsip_timer_init_session(pjsip_inv_session* inv,
+                                             const pjsip_timer_setting* setting)
 {
 	pjsip_timer_setting* s;
 

@@ -398,9 +398,8 @@ static int call_get_secure_level(pjsua_call *call)
 */
 
 /* Outgoing call callback when media transport creation is completed. */
-static pj_status_t
-on_make_call_med_tp_complete(pjsua_call_id call_id,
-                             const pjsua_med_tp_state_info* info)
+static pj_status_t on_make_call_med_tp_complete(pjsua_call_id call_id,
+                                                const pjsua_med_tp_state_info* info)
 {
 	pjmedia_sdp_session* offer = NULL;
 	pjsip_inv_session* inv = NULL;

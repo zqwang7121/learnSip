@@ -36,6 +36,8 @@ static int get_ip_addr_ver(const pj_str_t* host);
 static void schedule_reregistration(pjsua_acc* acc);
 static void keep_alive_timer_cb(pj_timer_heap_t* th, pj_timer_entry* te);
 
+
+
 /*
  * Get number of current accounts.
  */

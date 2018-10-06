@@ -196,9 +196,8 @@ PJ_DEF(pj_status_t) pjsip_dlg_create_uac(pjsip_user_agent* ua,
 				c = param->value.ptr[param->value.slen];
 				param->value.ptr[param->value.slen] = '\0';
 
-				hdr = (pjsip_hdr*)
-				      pjsip_parse_hdr(dlg->pool, &param->name, param->value.ptr,
-				                      param->value.slen, NULL);
+				hdr = (pjsip_hdr*) pjsip_parse_hdr(dlg->pool, &param->name, param->value.ptr,
+				                                   param->value.slen, NULL);
 
 				param->value.ptr[param->value.slen] = (char)c;
 
@@ -2032,8 +2031,7 @@ void pjsip_dlg_on_rx_response(pjsip_dialog* dlg, pjsip_rx_data* rdata)
 	if((dlg->state == PJSIP_DIALOG_STATE_NULL &&
 	    pjsip_method_creates_dialog(&rdata->msg_info.cseq->method) &&
 	    (res_code > 100 && res_code < 300) &&
-	    rdata->msg_info.to->tag.slen)
-	    ||
+	    rdata->msg_info.to->tag.slen)	||
 	    (dlg->role==PJSIP_ROLE_UAC &&
 	     !dlg->uac_has_2xx &&
 	     res_code > 100 &&
@@ -2068,8 +2066,7 @@ void pjsip_dlg_on_rx_response(pjsip_dialog* dlg, pjsip_rx_data* rdata)
 		/* The remote target MUST be set to the URI from the Contact header
 		 * field of the response.
 		 */
-		contact = (pjsip_contact_hdr*)
-		          pjsip_msg_find_hdr(rdata->msg_info.msg, PJSIP_H_CONTACT,
+		contact = (pjsip_contact_hdr*) pjsip_msg_find_hdr(rdata->msg_info.msg, PJSIP_H_CONTACT,
 		                             NULL);
 		if(contact && contact->uri &&
 		    (dlg->remote.contact==NULL ||

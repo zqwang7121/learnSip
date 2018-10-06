@@ -410,8 +410,7 @@ PJ_DEF(void) pjsip_resolve(pjsip_resolver_t* resolver,
 		svr_addr.entry[0].priority = 0;
 		svr_addr.entry[0].weight = 0;
 		svr_addr.entry[0].type = type;
-		svr_addr.entry[0].addr_len =
-		  pj_sockaddr_get_len(&svr_addr.entry[0].addr);
+		svr_addr.entry[0].addr_len = pj_sockaddr_get_len(&svr_addr.entry[0].addr);
 		(*cb)(status, token, &svr_addr);
 
 		/* Done. */

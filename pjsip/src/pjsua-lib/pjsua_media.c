@@ -2051,9 +2051,9 @@ static pj_status_t media_channel_init_cb(pjsua_call_id call_id,
 
 			if(call_med->tp)
 				{
-				status = pjmedia_transport_media_create(
-				           call_med->tp, tmp_pool,
-				           0, call->async_call.rem_sdp, mi);
+				status = pjmedia_transport_media_create(call_med->tp, 
+				                                        tmp_pool,
+				                                        0, call->async_call.rem_sdp, mi);
 				}
 			if(status != PJ_SUCCESS)
 				{

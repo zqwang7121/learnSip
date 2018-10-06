@@ -3511,8 +3511,7 @@ PJ_DEF(pj_status_t) pjsip_inv_send_msg(pjsip_inv_session* inv,
 
 	pj_log_push_indent();
 
-	PJ_LOG(5,(inv->obj_name, "Sending %s",
-	          pjsip_tx_data_get_info(tdata)));
+	PJ_LOG(5,(inv->obj_name, "Sending %s", pjsip_tx_data_get_info(tdata)));
 
 	if(tdata->msg->type == PJSIP_REQUEST_MSG)
 		{
