@@ -310,6 +310,17 @@ PJ_DEF(void) pj_pool_reset(pj_pool_t* pool)
 //	  reset_pool(pool);
 }
 
+PJ_DEF(void) pj_pool_reset_compelete(pj_pool_t* pool)
+{
+
+	LOG((pool->obj_name, "reset(): cap=%d, used=%d(%d%%)",
+	     pool->capacity, pj_pool_get_used_size(pool),
+	     pj_pool_get_used_size(pool)*100/pool->capacity));
+
+  reset_pool(pool);
+}
+
+
 /*
  * Destroy the pool.
  */

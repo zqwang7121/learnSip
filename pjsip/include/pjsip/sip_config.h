@@ -982,7 +982,7 @@ PJ_INLINE(pjsip_cfg_t*) pjsip_cfg(void)
 #define PJSIP_MAX_HNAME_LEN		64
 
 /* Dialog related constants. */
-#define PJSIP_POOL_LEN_DIALOG		8192
+#define PJSIP_POOL_LEN_DIALOG		16384
 #define PJSIP_POOL_INC_DIALOG		1024
 
 /* Maximum header types. */

@@ -1167,7 +1167,7 @@ static void tsx_timer_callback(pj_timer_heap_t* theap, pj_timer_entry* entry)
 	if(entry->id == TRANSPORT_ERR_TIMER)
 		{
 		/* Posted transport error event */
-		entry->id = 0;
+		entry->id = TIMER_INACTIVE;
 		if(tsx->state < PJSIP_TSX_STATE_TERMINATED)
 			{
 			pjsip_tsx_state_e prev_state;
@@ -1226,7 +1226,7 @@ static void tsx_timer_callback(pj_timer_heap_t* theap, pj_timer_entry* entry)
 		{
 		pjsip_event event;
 
-		entry->id = 0;
+		entry->id = TIMER_INACTIVE;
 
 		PJ_LOG(5,(tsx->obj_name, "%s timer event",
 		          (entry==&tsx->retransmit_timer ? "Retransmit":"Timeout")));

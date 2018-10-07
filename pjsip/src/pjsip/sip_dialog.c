@@ -2074,8 +2074,7 @@ void pjsip_dlg_on_rx_response(pjsip_dialog* dlg, pjsip_rx_data* rdata)
 		                   dlg->remote.contact->uri,
 		                   contact->uri)))
 			{
-			dlg->remote.contact = (pjsip_contact_hdr*)
-			                      pjsip_hdr_clone(dlg->pool, contact);
+			dlg->remote.contact = (pjsip_contact_hdr*) pjsip_hdr_clone(dlg->pool, contact);
 			dlg->target = dlg->remote.contact->uri;
 			}
 

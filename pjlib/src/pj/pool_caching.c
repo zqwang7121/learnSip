@@ -270,7 +270,7 @@ static void cpool_release_pool(pj_pool_factory* pf, pj_pool_t* pool)
 	PJ_LOG(6, (pool->obj_name, "recycle(): cap=%d, used=%d(%d%%)",
 	           pool_capacity, pj_pool_get_used_size(pool),
 	           pj_pool_get_used_size(pool)*100/pool_capacity));
-	pj_pool_reset(pool);
+	pj_pool_reset_compelete(pool);
 
 	pool_capacity = pj_pool_get_capacity(pool);
 
