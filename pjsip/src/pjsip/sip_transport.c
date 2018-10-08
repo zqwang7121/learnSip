@@ -573,8 +573,7 @@ PJ_DEF(pj_status_t) pjsip_tx_data_encode(pjsip_tx_data* tdata)
 
 		PJ_TRY
 			{
-			tdata->buf.start = (char*)
-			pj_pool_alloc(tdata->pool, PJSIP_MAX_PKT_LEN);
+			tdata->buf.start = (char*) pj_pool_alloc(tdata->pool, PJSIP_MAX_PKT_LEN);
 			}
 		PJ_CATCH_ANY
 			{

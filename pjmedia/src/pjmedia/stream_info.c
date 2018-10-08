@@ -291,8 +291,7 @@ static pj_status_t get_audio_codec_info_param(pjmedia_stream_info* si,
 			{
 			if(pjmedia_sdp_neg_fmt_match(pool,
 			                             (pjmedia_sdp_media*)local_m, fmti,
-			                             (pjmedia_sdp_media*)rem_m, i, 0) ==
-			    PJ_SUCCESS)
+			                             (pjmedia_sdp_media*)rem_m, i, 0) == PJ_SUCCESS)
 				{
 				/* Found matched codec. */
 				si->tx_pt = pj_strtoul(&rem_m->desc.fmt[i]);

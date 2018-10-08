@@ -35,7 +35,7 @@
 
 #define THIS_FILE   "sip_transaction.c"
 
-#if 0
+#if 1
 	#define TSX_TRACE_(expr)    PJ_LOG(3,expr)
 #else
 	#define TSX_TRACE_(expr)
@@ -668,9 +668,8 @@ static pjsip_transaction* find_tsx(const pj_str_t* key, pj_bool_t lock,
 	pj_uint32_t hval = 0;
 
 	pj_mutex_lock(mod_tsx_layer.mutex);
-	tsx = (pjsip_transaction*)
-	      pj_hash_get_lower(mod_tsx_layer.htable, key->ptr,
-	                        (unsigned)key->slen, &hval);
+	tsx = (pjsip_transaction*) pj_hash_get_lower(mod_tsx_layer.htable, key->ptr,
+	                                            (unsigned)key->slen, &hval);
 
 	/* Prevent the transaction to get deleted before we have chance to lock it.
 	 */
@@ -889,9 +888,8 @@ static pj_bool_t mod_tsx_layer_on_rx_response(pjsip_rx_data* rdata)
 	/* Find transaction. */
 	pj_mutex_lock(mod_tsx_layer.mutex);
 
-	tsx = (pjsip_transaction*)
-	      pj_hash_get_lower(mod_tsx_layer.htable, key.ptr, (unsigned)key.slen,
-	                        &hval);
+	tsx = (pjsip_transaction*) pj_hash_get_lower(mod_tsx_layer.htable, key.ptr, (unsigned)key.slen,
+	                                              &hval);
 
 
 	TSX_TRACE_((THIS_FILE,
@@ -1169,7 +1167,7 @@ static void tsx_timer_callback(pj_timer_heap_t* theap, pj_timer_entry* entry)
 	if(entry->id == TRANSPORT_ERR_TIMER)
 		{
 		/* Posted transport error event */
-		entry->id = 0;
+		entry->id = TIMER_INACTIVE;
 		if(tsx->state < PJSIP_TSX_STATE_TERMINATED)
 			{
 			pjsip_tsx_state_e prev_state;
@@ -1228,7 +1226,7 @@ static void tsx_timer_callback(pj_timer_heap_t* theap, pj_timer_entry* entry)
 		{
 		pjsip_event event;
 
-		entry->id = 0;
+		entry->id = TIMER_INACTIVE;
 
 		PJ_LOG(5,(tsx->obj_name, "%s timer event",
 		          (entry==&tsx->retransmit_timer ? "Retransmit":"Timeout")));
@@ -1457,8 +1455,7 @@ PJ_DEF(pj_status_t) pjsip_tsx_create_uac2(pjsip_module* tsx_user,
 	if(via->branch_param.slen == 0)
 		{
 		pj_str_t tmp;
-		via->branch_param.ptr = (char*)
-		                        pj_pool_alloc(tsx->pool, PJSIP_MAX_BRANCH_LEN);
+		via->branch_param.ptr = (char*) pj_pool_alloc(tsx->pool, PJSIP_MAX_BRANCH_LEN);
 		via->branch_param.slen = PJSIP_MAX_BRANCH_LEN;
 		pj_memcpy(via->branch_param.ptr, PJSIP_RFC3261_BRANCH_ID,
 		          PJSIP_RFC3261_BRANCH_LEN);

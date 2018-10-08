@@ -80,7 +80,7 @@ static const pjsip_method pjsip_update_method =
 	{ "UPDATE", 6 }
 };
 
-#define POOL_INIT_SIZE	256
+#define POOL_INIT_SIZE	512
 #define POOL_INC_SIZE	256
 
 /*
@@ -2181,7 +2181,7 @@ static pj_status_t inv_negotiate_sdp(pjsip_inv_session* inv)
 			}
 
 		/* Reset the provisional pool regardless SDP negotiation result. */
-		pj_pool_reset(inv->pool_prov);
+		pj_pool_reset_compelete(inv->pool_prov);
 
 		}
 	else
@@ -3511,8 +3511,7 @@ PJ_DEF(pj_status_t) pjsip_inv_send_msg(pjsip_inv_session* inv,
 
 	pj_log_push_indent();
 
-	PJ_LOG(5,(inv->obj_name, "Sending %s",
-	          pjsip_tx_data_get_info(tdata)));
+	PJ_LOG(5,(inv->obj_name, "Sending %s", pjsip_tx_data_get_info(tdata)));
 
 	if(tdata->msg->type == PJSIP_REQUEST_MSG)
 		{
@@ -4647,6 +4646,9 @@ static void inv_on_state_calling(pjsip_inv_session* inv, pjsip_event* e)
 
 				if(dlg->remote.info->tag.slen)
 					{
+					/*
+					receive 180 200 
+					*/
 
 					inv_set_state(inv, PJSIP_INV_STATE_EARLY, e);
 

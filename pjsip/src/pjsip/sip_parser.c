@@ -1546,9 +1546,8 @@ static pjsip_uri* int_parse_uri_or_name_addr(pj_scanner* scanner, pj_pool_t* poo
 				PJ_THROW(PJSIP_SYN_ERR_EXCEPTION);
 				}
 
-			uri = (pjsip_uri*)
-			      (*func)(scanner, pool,
-			              (opt & PJSIP_PARSE_URI_IN_FROM_TO_HDR)==0);
+			uri = (pjsip_uri*) (*func)(scanner, pool,
+			                           (opt & PJSIP_PARSE_URI_IN_FROM_TO_HDR)==0);
 
 
 			}

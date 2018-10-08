@@ -417,8 +417,10 @@ PJ_IDECL(const char*) pj_pool_getobjname(const pj_pool_t* pool);
  *
  * @param pool the pool.
  */
-PJ_DECL(void) pj_pool_reset(pj_pool_t* pool);
 
+PJ_DEF(void) pj_pool_reset_compelete(pj_pool_t* pool);
+
+PJ_DECL(void) pj_pool_reset(pj_pool_t* pool);
 
 /**
  * Get the pool capacity, that is, the system storage that have been allocated

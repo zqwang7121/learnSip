@@ -65,11 +65,11 @@
 #endif
 
 #ifndef PJMEDIA_STREAM_SIZE
-	#define PJMEDIA_STREAM_SIZE	1000
+	#define PJMEDIA_STREAM_SIZE	5000
 #endif
 
 #ifndef PJMEDIA_STREAM_INC
-	#define PJMEDIA_STREAM_INC	1000
+	#define PJMEDIA_STREAM_INC	2000
 #endif
 
 /* Number of DTMF E bit transmissions */

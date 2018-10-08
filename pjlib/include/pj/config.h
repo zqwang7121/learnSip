@@ -548,7 +548,7 @@
  * Default: 0
  */
 #ifndef PJ_TIMER_DEBUG
-	#define PJ_TIMER_DEBUG	    0
+	#define PJ_TIMER_DEBUG	   1
 #endif
 
 

@@ -340,7 +340,7 @@ PJ_INLINE(pjsip_cfg_t*) pjsip_cfg(void)
  * containing presence information can be quite large (>1500).
  */
 #ifndef PJSIP_MAX_PKT_LEN
-	#define PJSIP_MAX_PKT_LEN		4000
+	#define PJSIP_MAX_PKT_LEN		3500
 #endif
 
 
@@ -456,7 +456,7 @@ PJ_INLINE(pjsip_cfg_t*) pjsip_cfg(void)
  * Default is 1300 bytes.
  */
 #ifndef PJSIP_UDP_SIZE_THRESHOLD
-	#define PJSIP_UDP_SIZE_THRESHOLD	1300
+	#define PJSIP_UDP_SIZE_THRESHOLD	1500
 #endif
 
 
@@ -982,8 +982,8 @@ PJ_INLINE(pjsip_cfg_t*) pjsip_cfg(void)
 #define PJSIP_MAX_HNAME_LEN		64
 
 /* Dialog related constants. */
-#define PJSIP_POOL_LEN_DIALOG		1200
-#define PJSIP_POOL_INC_DIALOG		512
+#define PJSIP_POOL_LEN_DIALOG		16384
+#define PJSIP_POOL_INC_DIALOG		1024
 
 /* Maximum header types. */
 #define PJSIP_MAX_HEADER_TYPES		72

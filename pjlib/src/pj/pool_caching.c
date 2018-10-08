@@ -253,8 +253,13 @@ static void cpool_release_pool(pj_pool_factory* pf, pj_pool_t* pool)
 	 * capacity in our recycle list (plus the size of the pool) exceeds
 	 * maximum capacity.
 	. */
+#if 0
 	if(pool_capacity > pool_sizes[PJ_CACHING_POOL_ARRAY_SIZE-1] ||
 	    cp->capacity + pool_capacity > cp->max_capacity)
+#else
+  if(pool_capacity > pool_sizes[PJ_CACHING_POOL_ARRAY_SIZE-1])
+#endif
+
 		{
 		pj_pool_destroy_int(pool);
 		pj_lock_release(cp->lock);
@@ -265,7 +270,7 @@ static void cpool_release_pool(pj_pool_factory* pf, pj_pool_t* pool)
 	PJ_LOG(6, (pool->obj_name, "recycle(): cap=%d, used=%d(%d%%)",
 	           pool_capacity, pj_pool_get_used_size(pool),
 	           pj_pool_get_used_size(pool)*100/pool_capacity));
-	pj_pool_reset(pool);
+	pj_pool_reset_compelete(pool);
 
 	pool_capacity = pj_pool_get_capacity(pool);
 
