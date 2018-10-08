@@ -363,6 +363,8 @@ static int cancel(pj_timer_heap_t* ht,
 
 	if(entry != ht->heap[timer_node_slot])
 		{
+		/* entry is error for cancel heap timer       */
+
 		if((flags & F_DONT_ASSERT) == 0)
 			{
 			pj_assert(entry == ht->heap[timer_node_slot]);
@@ -389,12 +391,12 @@ static int cancel(pj_timer_heap_t* ht,
  */
 PJ_DEF(pj_size_t) pj_timer_heap_mem_size(pj_size_t count)
 {
-	return /* size of the timer heap itself: */
-	  sizeof(pj_timer_heap_t) +
+	/* size of the timer heap itself: */
+	  return sizeof(pj_timer_heap_t) +
 	  /* size of each entry: */
-	  (count+2) * (sizeof(pj_timer_entry*)+sizeof(pj_timer_id_t)) +
+	  (count+2) * (sizeof(pj_timer_entry*)+sizeof(pj_timer_id_t)) + 132;
+	  
 	  /* lock, pool etc: */
-	  132;
 }
 
 /*

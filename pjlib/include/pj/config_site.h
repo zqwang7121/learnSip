@@ -27,7 +27,7 @@
 	#define PJMEDIA_HAS_ALAW_ULAW_TABLE	1
 	#define PJMEDIA_HAS_SPEEX_AEC		0
 	
-    #define PJMEDIA_HAS_OPUS_CODEC      1
+    #define PJMEDIA_HAS_OPUS_CODEC      0
 	
     #define PJMEDIA_HAS_G722_CODEC      0
 
